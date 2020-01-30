@@ -15,6 +15,8 @@
   --text-shadow: 0 1px 1px rgba(26,26,26,.1);
   --btn-outer-shadow: inset 0 0 0 0 var(--bg-color-element), inset 0 0 1px 0 #ffffff, inset 0 0 1px 0 rgba(136, 165, 191, 0.58), -4px -2px 1rem #ffffff, 4px 2px 1rem rgba(136, 165, 191, 0.58);
   --btn-inner-shadow: inset 0 0 0 2px var(--bg-color-element), inset -3px -3px 7px 2px #ffffff, inset 3px 3px 7px 2px rgba(136, 165, 191, 0.58), -1px -1px 3px 0px #ffffff, 1px 1px 2px -1px rgba(136, 165, 191, 0.58);
+  --mobile-size: 272px;
+  --input-inner-shadow: inset -1px -1px 3px #fff, inset 1px 1px 3px rgba(136,165,191,.58), 0 0 0 #fff, 0 0 0 rgba(136,165,191,.58);
 }
 
 $size-1: 0.85rem;
@@ -112,6 +114,9 @@ thead {
   background: var(--bg-card-color);
 
   @include media(netbook) {
+    max-width: 1000px;
+    margin: 2rem 0;
+    padding: 2rem;
     min-height: initial;
     border-radius: 2.5rem;
     box-shadow: 1.5rem 2rem 4rem rgba(136, 165, 191, 0.58);
@@ -206,12 +211,17 @@ thead {
   text-align: center;
 
   &--states {
+    grid-template-rows: repeat(auto-fit, minmax(max-content, 40px));
     grid-template-columns: repeat(auto-fit, minmax(max-content, 2rem));
   }
 
   .section-list__item {
     padding: 0.5rem 0 1rem;
     border-bottom: 1px solid var(--color-table-bg);
+  }
+
+  &--search-list {
+    margin-top: 2rem;
   }
 }
 
@@ -257,6 +267,10 @@ thead {
     grid-column: initial;
   }
 
+  @include media(tablet) {
+    padding: 2rem;
+  }
+
   &::before {
     content: attr(data-text);
     display: block;
@@ -265,7 +279,12 @@ thead {
     text-align: center;
     font-weight: bold;
     font-size: 1.25rem;
-  } 
+  }
+
+  &-search {
+    grid-template-columns: minmax(max-content, var(--mobile-size));
+    justify-content: center;
+  }
 }
 
 .section-table {
@@ -301,9 +320,52 @@ thead {
 
 // Form
 .search-form {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, max-content);
   justify-content: center;
+}
+
+.input-field {
+  display: block;
+  padding: 1rem 5rem 1rem 1rem;
+  width: 100%;
+  min-width: var(--mobile-size);
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1rem;
+  box-shadow: var(--input-inner-shadow);
+  border-radius: 1rem;
+  outline: none;
+
+  &::placeholder {
+    color: var(--color-gray);
+  }
+
+  &:focus {
+    background: var(--color-light);
+  }
+}
+
+.search-form__label {
+  display: grid;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.small {
+  font-size: 0.75rem;
+  color: var(--color-gray);
+  text-align: center;
+}
+
+.search-form__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  background: var(--bg-color-element);
 }
 
 // Footer
@@ -318,6 +380,12 @@ thead {
 .socials {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+
+  @include media(tablet) {
+    max-width: 356px;
+    width: 100%;
+    gap: 2rem;
+  }
 
   a {
     display: flex;

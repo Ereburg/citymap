@@ -21,9 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // console.log(a.closestCity(35.05, -84.39));
   // console.log(a.closestCity(-85.05, -134.39));
 
-  console.log(a.states)
-  console.log(a.cities_array)
-  console.log(a.all_states_array)
+  // console.log(a.states)
+  // console.log(a.cities_array)
+  // console.log(a.all_states_array)
 
   console.log(a.citiesInState('TN'))
   console.log(a.citiesInState('CA'))
@@ -81,4 +81,34 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     })
   })
+
+  // Вкладка Поиска
+  const searchByStatestInput = document.getElementById('search-states')
+  const searchByStatestForm = document.querySelector('.search-form')
+  const searchByStatestList = document.querySelector('.section__list--search-list')
+
+  function searchByStates(input, list) {
+    let inputValue = input.value
+    let sitiesArray = a.citiesInState(inputValue)
+
+    const cleansing = () => {
+      while (list.firstChild) {
+        list.firstChild.remove()
+      }
+    }
+
+    cleansing()
+
+    sitiesArray.forEach(item => {
+      let LI = document.createElement('li')
+      LI.append(item)
+      list.append(LI)
+    })
+  }
+
+  searchByStatestForm.addEventListener('submit', e => {
+    e.preventDefault()
+    searchByStates(searchByStatestInput, searchByStatestList)
+  })
+
 })
