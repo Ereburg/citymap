@@ -29,6 +29,31 @@ $color-aux: transparentize($color: #31456a, $amount: 0.2);
 }
 
 
+@mixin media($name: phone) {
+  @if $name == iphone5s {
+    @media screen and (max-width: 340px) {
+      @content;
+    }
+  }
+  @else if $name == phone {
+    @media screen and (min-width: 500px) {
+      @content;
+    }
+  }
+  @else if $name == tablet {
+    @media screen and (min-width: 768px) {
+      @content;
+    }
+  }
+  @else if $name == laptop {
+    @media screen and (min-width: 986px) {
+      @content;
+    }
+  }
+}
+
+
+
 
 * {
   margin: 0;
@@ -41,11 +66,11 @@ $color-aux: transparentize($color: #31456a, $amount: 0.2);
 
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Rubik', 'Ubuntu', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', Arial, 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: rgba(0, 0, 0, 0.795);
 }
 
 ul {
@@ -67,26 +92,33 @@ thead {
 
 .app {
   display: grid;
+  justify-content: center;
+  grid-template-columns: minmax(280px, 400px);
   gap: 2rem;
-  min-width: 320px;
-  max-width: 400px;
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   background: var(--bg-card-color);
-  border-radius: 2.5rem;
-  box-shadow: 1.5rem 2rem 4rem rgba(136, 165, 191, 0.58);
+
+  &__item {
+    max-width: 400px;
+  }
+  
+  @include media() {
+    min-width: 320px;
+    border-radius: 2.5rem;
+    box-shadow: 1.5rem 2rem 4rem rgba(136, 165, 191, 0.58);
+  }
+
+  @include media(iphone5s) {
+    padding: 0.5rem;
+  }
 }
 
 .wrap {
   display: flex;
   justify-content: center;
-
-  &--content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
 }
+
 .app__title {
   margin: 0 0 0 1rem;
   font-size: 2.5rem;
@@ -103,6 +135,7 @@ thead {
   font-size: $size-1;
   text-align: center;
   @include inner-box(--box-shadow, 1rem 1.5rem);
+
   &--updated-date {
     color: $color-aux;
   }
@@ -136,42 +169,55 @@ thead {
   }
 }
 
-.app__buttons {
+.section-points__list {
   display: grid;
-  grid-template-rows: repeat(1, 4rem);
-  grid-template-columns: repeat(auto-fit, minmax(max-content, 4rem));
-  // gap: 1.65rem;
-  justify-content: space-between;
-}
-
-.app__section {
-  display: flex;
+  gap: 0.5rem;
   justify-content: center;
-  align-items: center;
-  align-self: center;
+  text-align: center;
 
-  &.section-latest {
-    grid-column: 1 / -1;
-    display: grid;
-    gap: 1rem;
-    width: 100%;
-    font-size: $size-1;
-    @include inner-box(--box-shadow, 2rem 1rem);
-
-
-    &::before {
-      content: attr(data-text);
-      display: block;
-      grid-column: 1 / -1;
-      margin-bottom: 0.25rem;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.25rem;
-    } 
+  p {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-table-bg);
   }
 }
 
-.section-latest__table {
+.banner {
+  display: none;
+
+  &.active {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+} 
+
+.banner-togglers {
+  display: grid;
+  grid-template-rows: repeat(1, 4rem);
+  grid-template-columns: repeat(auto-fit, minmax(max-content, 4rem));
+  justify-content: space-between;
+}
+
+.section {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  font-size: $size-1;
+  @include inner-box(--box-shadow, 2rem 1rem);
+
+  &::before {
+    content: attr(data-text);
+    display: block;
+    grid-column: 1 / -1;
+    margin-bottom: 0.25rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+  } 
+}
+
+.section-table {
   border-collapse: collapse;
   width: 100%;
   
@@ -227,11 +273,10 @@ thead {
   align-items: center;
 
   &:nth-child(2n) {
-    border-right: 1px solid transparentize($color: #31456a, $amount: 0.5) ;
-    border-left: 1px solid transparentize($color: #31456a, $amount: 0.5) ;
+    border-right: 1px solid transparentize($color: #31456a, $amount: 0.5);
+    border-left: 1px solid transparentize($color: #31456a, $amount: 0.5);
   }
 }
-
 
 .social__icon {
   max-width: 18px;
