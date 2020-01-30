@@ -55,10 +55,17 @@ export default class CityMap {
   }
 
   get states() {
-    let states_arr = [] // инициализируем пустой массив
-    this.string.forEach(item => states_arr.push(item.state)) // записываем в него все штаты 
-    states_arr = [...new Set(states_arr)].join(' ') // убираем дубликаты и склеиваем в строку
-    return states_arr
+    let array = [] // инициализируем пустой массив
+    this.string.forEach(item => array.push(item.state)) // записываем в него все штаты 
+    array = [...new Set(array)].join(' ') // убираем дубликаты и склеиваем в строку
+    return array
+  }
+
+  get all_states_array() {
+    let array = [] // инициализируем пустой массив
+    this.string.forEach(item => array.push(item.state)) // записываем в него все штаты 
+    array = [...new Set(array)] // убираем дубликаты и склеиваем в строку
+    return array
   }
 
   get cities_array() {
@@ -86,9 +93,9 @@ export default class CityMap {
   }
 
   citiesInState(state_name) {
-    let state_cities = [] // инициализируем пустой массив
-    this.string.filter(item => (item.state === state_name) ? state_cities.push(item.city) : false) // если текущий элемент имеет совпадение с ключом по штату, то передаем его город в массив
-    return state_cities
+    let array = [] // инициализируем пустой массив
+    this.string.filter(item => (item.state === state_name) ? array.push(item.city) : false) // если текущий элемент имеет совпадение с ключом по штату, то передаем его город в массив
+    return array
   }
 
   closestCity(la, lg) {

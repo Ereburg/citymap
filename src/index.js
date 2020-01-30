@@ -2,7 +2,7 @@ import 'normalize.css'
 import CityMap from '@models/CityMap'
 import latestAdded from '@models/latestAdded'
 import last_updated from '@models/last_updated'
-import furthest_points from '@models/furthest_points'
+import addListItem from '@models/addListItem'
 import './babel'
 import './styles/scss.scss'
 
@@ -13,18 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // str = str + '"Москва, МО", 66.17, 86.78; "Минск, Минск", 60.71, 84.00;'
 
-  console.log(str)
-
   const a = new CityMap({
     string: str,
   })
-
-  console.log(a.string)
-
-  // console.log(a.northernmost)
-  // console.log(a.southernmost)
-  // console.log(a.westernmost)
-  // console.log(a.easternmost)
 
   // console.log(a.closestCity(35.05, -104.39));
   // console.log(a.closestCity(35.05, -84.39));
@@ -32,11 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log(a.states)
   console.log(a.cities_array)
+  console.log(a.all_states_array)
 
   console.log(a.citiesInState('TN'))
   console.log(a.citiesInState('CA'))
 
 
+  // Таблицы с городами
   let cities_array = a.cities_array
   let states_array = a.states_array
   let latitude_array = a.latitude_array
@@ -53,16 +46,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  // Последнее обновление списка городов
   const updated_date = document.querySelector('.info__text--updated-date')
   last_updated(updated_date)
 
-  const furthest_points_list = document.querySelector('.section-points__list')
+  // Список самых географически крайних городов
+  const furthest_points_list = document.querySelector('.section__list--points')
   const furthest_points_arr = [a.northernmost, a.easternmost, a.southernmost, a.westernmost]
 
   for (let i = 0; i < furthest_points_arr.length; i++) {
-    furthest_points(furthest_points_arr[i], furthest_points_list)
+    addListItem(furthest_points_arr[i], furthest_points_list)
   }
 
+  // Список всех штатов
+  const states_list = document.querySelector('.section__list--states')
+  const states_arr = a.all_states_array
+
+  for (let i = 0; i < states_arr.length; i++) {
+    addListItem(states_arr[i], states_list)
+  }
+
+  // Вкладки
   const bannerButtons = document.querySelectorAll('.btn--toggler')
   const bannerContent = document.querySelectorAll('.banner')
 

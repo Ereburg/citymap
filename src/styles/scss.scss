@@ -50,6 +50,16 @@ $color-aux: transparentize($color: #31456a, $amount: 0.2);
       @content;
     }
   }
+  @else if $name == netbook {
+    @media screen and (min-width: 1120px) {
+      @content;
+    }
+  }
+  @else if $name == desktop {
+    @media screen and (min-width: 1300px) {
+      @content;
+    }
+  }
 }
 
 
@@ -92,42 +102,61 @@ thead {
 
 .app {
   display: grid;
-  justify-content: center;
+  grid-template-rows: max-content auto max-content;
   grid-template-columns: minmax(280px, 400px);
+  justify-content: center;
   gap: 2rem;
   width: 100%;
+  min-height: 100vh;
   padding: 1rem;
   background: var(--bg-card-color);
 
-  &__item {
-    max-width: 400px;
-  }
-  
-  @include media() {
-    min-width: 320px;
+  @include media(netbook) {
+    min-height: initial;
     border-radius: 2.5rem;
     box-shadow: 1.5rem 2rem 4rem rgba(136, 165, 191, 0.58);
   }
+  
+  @include media(laptop) {
+    grid-template-columns: minmax(400px, 800px);
+  }
 
   @include media(iphone5s) {
-    padding: 0.5rem;
+    padding: 1rem 0.5rem;
   }
 }
 
-.wrap {
-  display: flex;
-  justify-content: center;
-}
-
 .app__title {
-  margin: 0 0 0 1rem;
+  margin: 0;
   font-size: 2.5rem;
 }
 
 .app__content {
   display: grid;
+  grid-template-rows: max-content auto max-content;
   gap: 3rem;
   padding: 0;
+}
+
+.app__item--header {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app__item > :first-child {
+  @include media(laptop) {
+    justify-self: center;
+  }
+}
+
+.app__info {
+  @include media(laptop) {
+    max-width: 356px;
+    width: 100%;
+  }
 }
 
 .info__text {
@@ -135,6 +164,7 @@ thead {
   font-size: $size-1;
   text-align: center;
   @include inner-box(--box-shadow, 1rem 1.5rem);
+
 
   &--updated-date {
     color: $color-aux;
@@ -169,14 +199,18 @@ thead {
   }
 }
 
-.section-points__list {
+.section__list {
   display: grid;
   gap: 0.5rem;
   justify-content: center;
   text-align: center;
 
-  p {
-    padding-bottom: 0.5rem;
+  &--states {
+    grid-template-columns: repeat(auto-fit, minmax(max-content, 2rem));
+  }
+
+  .section-list__item {
+    padding: 0.5rem 0 1rem;
     border-bottom: 1px solid var(--color-table-bg);
   }
 }
@@ -188,6 +222,14 @@ thead {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
+
+    @include media(laptop) {
+      grid-template-columns: repeat(2, 1fr);
+
+      & > :first-child {
+        grid-column: 1 / -1;
+      }
+    }
   }
 } 
 
@@ -196,6 +238,11 @@ thead {
   grid-template-rows: repeat(1, 4rem);
   grid-template-columns: repeat(auto-fit, minmax(max-content, 4rem));
   justify-content: space-between;
+
+  @include media(laptop) {
+    justify-content: center;
+    gap: 2rem;
+  }
 }
 
 .section {
@@ -205,6 +252,10 @@ thead {
   width: 100%;
   font-size: $size-1;
   @include inner-box(--box-shadow, 2rem 1rem);
+
+  @include media(laptop) {
+    grid-column: initial;
+  }
 
   &::before {
     content: attr(data-text);
@@ -223,12 +274,12 @@ thead {
   
   thead {
     td {
-      padding: 0.5rem;
+      padding: 0.5rem 0.5rem 0.75rem;
     }
   }
   
   td {
-    padding: 0.25rem 0.5rem;
+    padding: 0.75rem 0.5rem;
   }
 
   tr {
@@ -244,6 +295,15 @@ thead {
       background: var(--color-table-bg);
     }
   }
+}
+
+
+
+// Form
+.search-form {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
 }
 
 // Footer

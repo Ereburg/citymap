@@ -12,7 +12,7 @@
 <body>
   <div class="wrapper">
     <div class="app">
-      <header class="app__item wrap wrap--title">
+      <header class="app__item app__item--header">
         <svg aria-hidden="true" focusable="false" class="icon icon--brand" width="20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
           <path fill="currentColor" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path>
         </svg>
@@ -43,7 +43,11 @@
             </section>
     
             <section class="section section-points" data-text="Furthest Cities">
-              <ul class="section-points__list"></ul>
+              <ul class="section__list section__list--points"></ul>
+            </section>
+
+            <section class="section section-states" data-text="List of States">
+              <ul class="section__list section__list--states"></ul>
             </section>
           </div>
 
@@ -55,7 +59,14 @@
 
           <div class="banner banner--search" data-banner="search">
             <section class="section section-latest" data-text="Search by states">
-             Search
+             <form class="search-form">
+               <p class="search-form__row">
+                <label class="search-form__label" for="search-states">
+                  <input class="search-form__input" id="search-states" type="text" inputmode="search" pattern="([A-Z]{,2})" autocomplete="off" aria-label="Type here state name to search it's cities" placeholder="Search for cities..." autofocus required >
+                </label>
+               </p>
+               <button class="search-form__button" type="button">Search</button>
+             </form>
             </section>
           </div>
 
@@ -133,7 +144,7 @@
         </ul>
         
         <p class="app__credits">
-          Designed by <strong><a>Ereburg</a></strong> in 2020.
+          Designed by <strong><a>Ereburg</a></strong> in January, 2020.
         </p>
 
       </footer>
