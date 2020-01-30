@@ -94,7 +94,8 @@ export default class CityMap {
 
   citiesInState(state_name) {
     let array = [] // инициализируем пустой массив
-    this.string.filter(item => (item.state === state_name) ? array.push(item.city) : false) // если текущий элемент имеет совпадение с ключом по штату, то передаем его город в массив
+    this.string.filter(item => (item.state === state_name) ? array.push(item.city) : false) 
+    array.sort((c, d) => c.localeCompare(d)) // если текущий элемент имеет совпадение с ключом по штату, то передаем его город в массив
     return array
   }
 

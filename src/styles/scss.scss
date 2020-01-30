@@ -129,6 +129,10 @@ thead {
   @include media(iphone5s) {
     padding: 1rem 0.5rem;
   }
+
+  @include media(tablet) {
+    gap: 3rem;
+  }
 }
 
 .app__title {
@@ -234,13 +238,21 @@ thead {
     gap: 2rem;
 
     @include media(laptop) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      justify-content: center;
+      gap: 3rem;
 
-      & > :first-child {
+      & > [data-table]:first-child {
         grid-column: 1 / -1;
+      }
+
+      [data-align="center"] {
+        justify-self: center;
+        max-width: 60%;
       }
     }
   }
+
 } 
 
 .banner-togglers {
@@ -263,12 +275,13 @@ thead {
   font-size: $size-1;
   @include inner-box(--box-shadow, 2rem 1rem);
 
-  @include media(laptop) {
-    grid-column: initial;
-  }
-
   @include media(tablet) {
     padding: 2rem;
+  }
+
+  @include media(laptop) {
+    grid-column: initial;
+    padding: 3rem 2rem;
   }
 
   &::before {
@@ -341,6 +354,7 @@ thead {
 
   &::placeholder {
     color: var(--color-gray);
+    font-size: $size-1;
   }
 
   &:focus {
@@ -351,7 +365,7 @@ thead {
 .search-form__label {
   display: grid;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .small {

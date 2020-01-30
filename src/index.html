@@ -31,7 +31,7 @@
         <div class="banner-list">
           <div class="banner banner--home active" data-banner="home">
 
-            <section class="section section-latest" data-text="Latest Added">
+            <section class="section section-latest" data-text="Latest Added" data-table="table">
               <table class="section-table">
                 <thead>
                   <tr>
@@ -55,18 +55,18 @@
           </div>
 
           <div class="banner banner--add" data-banner="add">
-            <section class="section section-latest" data-text="Add manually">
+            <section class="section section-latest" data-text="Add manually" data-align="center">
              Add
             </section>
           </div>
 
           <div class="banner banner--search" data-banner="search">
-            <section class="section section-search" data-text="Search by states">
+            <section class="section section-search" data-text="Search by states" data-align="center">
              <form class="search-form">
                <p class="search-form__row">
                 <label class="search-form__label" for="search-states">
-                  <input class="search-form__input input-field" id="search-states" type="text" inputmode="search" pattern="[A-Z]{2}" autocomplete="off" aria-label="Type here state name to search it's cities" placeholder="Search for cities..." autofocus required >
-                  <small class="small small--form-search">e.g. TN (Tennessee)</small>
+                  <input class="search-form__input input-field" id="search-states" type="text" inputmode="search" pattern="[A-Z]{2}" autocomplete="off" aria-label="Type here state name to search it's cities" placeholder="e.g. TN (Tennessee)" autofocus required >
+                  <small class="small small--form-search">Text should be 2 characters long, must contain uppercase letters.</small>
                 </label>
                </p>
                <button class="search-form__button btn" type="submit" aria-label="Search by states button">Search</button>
@@ -78,7 +78,7 @@
           </div>
 
           <div class="banner banner--list" data-banner="list">
-            <section class="section section-list" data-text="List of all cities">
+            <section class="section section-list" data-text="List of all cities" data-table="table">
               <table class="section-table">
                 <thead>
                   <tr>

@@ -21,13 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // console.log(a.closestCity(35.05, -84.39));
   // console.log(a.closestCity(-85.05, -134.39));
 
-  // console.log(a.states)
-  // console.log(a.cities_array)
-  // console.log(a.all_states_array)
-
-  console.log(a.citiesInState('TN'))
-  console.log(a.citiesInState('CA'))
-
 
   // Таблицы с городами
   let cities_array = a.cities_array
@@ -89,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function searchByStates(input, list) {
     let inputValue = input.value
-    let sitiesArray = a.citiesInState(inputValue)
+    let сitiesArray = a.citiesInState(inputValue)
 
     const cleansing = () => {
       while (list.firstChild) {
@@ -99,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cleansing()
 
-    sitiesArray.forEach(item => {
+    сitiesArray.forEach(item => {
       let LI = document.createElement('li')
       LI.append(item)
       list.append(LI)
