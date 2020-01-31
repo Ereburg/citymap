@@ -1,4 +1,4 @@
-export default function last_updated(parent) {
+export default function changeUpdateDate(parent) {
   let current_date = new Date
   let year = current_date.getFullYear()
   let month = current_date.getMonth()

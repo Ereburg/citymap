@@ -174,7 +174,6 @@ thead {
   text-align: center;
   @include inner-box(--box-shadow, 1rem 1.5rem);
 
-
   &--updated-date {
     color: $color-aux;
   }
@@ -224,7 +223,13 @@ thead {
     border-bottom: 1px solid var(--color-table-bg);
   }
 
-  &--search-list {
+  &--search-list:not(:empty) {
+    @include inner-box(--box-shadow, 1rem 1.5rem);
+    margin-top: 2rem;
+  }
+
+  &--check-list:not(:empty) {
+    @include inner-box(--box-shadow, 1rem 1.5rem);
     margin-top: 2rem;
   }
 }
@@ -295,7 +300,7 @@ thead {
   }
 
   &-search {
-    grid-template-columns: minmax(max-content, var(--mobile-size));
+    grid-template-columns: minmax(1fr, var(--mobile-size));
     justify-content: center;
   }
 }
@@ -332,11 +337,21 @@ thead {
 
 
 // Form
-.search-form {
+.section-form {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(2, max-content);
+  grid-template-columns: 1fr;
   justify-content: center;
+
+  &--check {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    .section-form__button--check {
+      grid-column: 1 / -1;
+      justify-self: center;
+    }
+  }
 }
 
 .input-field {
@@ -362,7 +377,7 @@ thead {
   }
 }
 
-.search-form__label {
+.section-form__label {
   display: grid;
   justify-content: center;
   gap: 1rem;
@@ -374,7 +389,7 @@ thead {
   text-align: center;
 }
 
-.search-form__button {
+.section-form__button--states {
   position: absolute;
   top: 0;
   right: 0;

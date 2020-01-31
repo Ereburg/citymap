@@ -55,25 +55,43 @@
           </div>
 
           <div class="banner banner--add" data-banner="add">
-            <section class="section section-latest" data-text="Add manually" data-align="center">
-             Add
-            </section>
+           
           </div>
 
           <div class="banner banner--search" data-banner="search">
             <section class="section section-search" data-text="Search by states" data-align="center">
-             <form class="search-form">
-               <p class="search-form__row">
-                <label class="search-form__label" for="search-states">
-                  <input class="search-form__input input-field" id="search-states" type="text" inputmode="search" pattern="[A-Z]{2}" autocomplete="off" aria-label="Type here state name to search it's cities" placeholder="e.g. TN (Tennessee)" autofocus required >
+             <form class="section-form section-form--search">
+               <p class="section-form__row">
+                <label class="section-form__label" for="search-states">
+                  <input class="section-form__input input-field" id="search-states" type="text" inputmode="search" pattern="[A-Z]{2}" autocomplete="off" aria-label="Type here state name to search it's cities" placeholder="e.g. TN (Tennessee)" autofocus required >
                   <small class="small small--form-search">Text should be 2 characters long, must contain uppercase letters.</small>
                 </label>
                </p>
-               <button class="search-form__button btn" type="submit" aria-label="Search by states button">Search</button>
+               <button class="section-form__button--states btn" type="submit" aria-label="Search by states button">Search</button>
              </form>
 
              <ol class="section__list section__list--search-list"></ol>
 
+            </section>
+
+            <section class="section section-closest" data-text="Check closest city" data-align="center">
+              <form class="section-form section-form--check">
+                <p class="section-form__row">
+                 <label class="section-form__label" for="check-latitude">
+                   <input class="section-form__input input-field" id="check-latitude" name="latitude" type="text" inputmode="numeric" pattern="^([-+]?[0-9]{1,2})(\.[0-9]{1,2})?$" autocomplete="off" aria-label="Type latitude here" placeholder="e.g. 89.25" required >
+                   <small class="small small--form-check">Latitude must be 5 characters long, must contain arabic nubmers with two decimals divided by a dot. Maximum value: «90.00», minimum value: «-90.00»</small>
+                 </label>
+                </p>
+                <p class="section-form__row">
+                  <label class="section-form__label" for="check-longitude">
+                    <input class="section-form__input input-field" id="check-longitude" name="longitude" type="text" inputmode="numeric" pattern="^([-+]?[0-9]{0,3})(\.[0-9]{1,2})?$" autocomplete="off" aria-label="Type latitude here" placeholder="e.g. 184.13" required >
+                    <small class="small small--form-check">Longitude must be 5 characters long, must contain arabic nubmers with two decimals divided by a dot. Maximum value: «180.00», minimum value: «-180.00»</small>
+                  </label>
+                 </p>
+                <button class="section-form__button section-form__button--check btn" type="submit" aria-label="Check closest city to your coordinates">Check!</button>
+              </form>
+ 
+              <ol class="section__list section__list--check-list"></ol>
             </section>
           </div>
 

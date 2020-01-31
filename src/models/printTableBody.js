@@ -1,4 +1,4 @@
-export default function latest_added(add_city, add_atates, add_latitude, add_longitude, add_parent) {
+export default function printTableBody(add_city, add_atates, add_latitude, add_longitude, add_parent) {
   let ROW = document.createElement('tr')
   let TD_CITY = document.createElement('td')
   let TD_STATE = document.createElement('td')
