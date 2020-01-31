@@ -14,3 +14,5 @@ automatically after page reload
 - add visual representation for the states using webix charts
 [Link](​https://docs.webix.com/samples/08_chart/04_pie_chart/04_donut.html)​. You can copy a solution from that link and apply it to your project.
 - or you can do a visualization with d3 chart [Link](​https://www.d3-graph-gallery.com/graph/pie_basic.html)​You can copy a solution from that link and apply it to your project.
+## Link to GitHub Pages
+[Link to the project](https://Ereburg.github.io/citymap/dist)
