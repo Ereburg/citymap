@@ -116,7 +116,6 @@ thead {
   @include media(netbook) {
     max-width: 1000px;
     margin: 2rem 0;
-    padding: 2rem;
     min-height: initial;
     border-radius: 2.5rem;
     box-shadow: 1.5rem 2rem 4rem rgba(136, 165, 191, 0.58);
@@ -132,6 +131,7 @@ thead {
 
   @include media(tablet) {
     gap: 3rem;
+    padding: 2rem;
   }
 }
 
@@ -253,7 +253,6 @@ thead {
 
       [data-align="center"] {
         justify-self: center;
-        max-width: 60%;
       }
     }
   }
@@ -275,7 +274,7 @@ thead {
 .section {
   grid-column: 1 / -1;
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
   width: 100%;
   font-size: $size-1;
   @include inner-box(--box-shadow, 2rem 1rem);
@@ -342,6 +341,7 @@ thead {
   display: grid;
   grid-template-columns: 1fr;
   justify-content: center;
+  gap: 2rem;
 
   &--check {
     grid-template-columns: 1fr;
@@ -352,6 +352,27 @@ thead {
       justify-self: center;
     }
   }
+
+  &--add {
+    @include media(laptop) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+
+
+      .section-form__button--add {
+        grid-column: 1 / -1;
+        justify-self: center;
+        padding: 1rem 3rem;
+      }
+    }
+  }
+
+  .section-form__heading {
+    margin: 0 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
 }
 
 .input-field {
@@ -384,9 +405,9 @@ thead {
 }
 
 .small {
+  margin: 0 1rem;
   font-size: 0.75rem;
   color: var(--color-gray);
-  text-align: center;
 }
 
 .section-form__button--states {

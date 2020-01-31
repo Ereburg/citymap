@@ -10,6 +10,23 @@
   <meta name="author" content="Ereburg">
   <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
   <title>City Map</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="./apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="./apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="./apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="./android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="./ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -25,7 +42,7 @@
       <main class="app__item app__content">
 
         <div class="app__info info">
-          <p class="info__text info__text--updated">Updated: <span class="info__text--updated-date">January 29, 2020 21:30</span></p>
+          <p class="info__text info__text--updated">Updated: <span class="info__text--updated-date"></span></p>
         </div>
 
         <div class="banner-list">
@@ -55,7 +72,39 @@
           </div>
 
           <div class="banner banner--add" data-banner="add">
-           
+            <section class="section section-add" data-text="Add new item manually" data-table="table">
+              <form class="section-form section-form--add">
+                <p class="section-form__row">
+                  <label class="section-form__label" for="add-city">
+                    <span class="section-form__heading">City</span>
+                    <input class="section-form__input input-field" id="add-city" name="add-city" type="text" inputmode="text" pattern="[\w\s]{4,80}" autocomplete="off" aria-label="Type city name here" placeholder="e.g. Washington" required >
+                    <small class="small small--form-add">String must contain only latin characters. Max size - 80 chars, min size - 4 chars.</small>
+                  </label>
+                 </p>
+                 <p class="section-form__row">
+                  <label class="section-form__label" for="add-state">
+                    <span class="section-form__heading">State</span>
+                    <input class="section-form__input input-field" id="add-state" name="add-state" type="text" inputmode="text" pattern="[A-Z]{2}" autocomplete="off" aria-label="Type city name here" placeholder="e.g. TN" required >
+                    <small class="small small--form-add">String must contain only latin characters. Max size - 80 chars, min size - 4 chars.</small>
+                  </label>
+                 </p>
+                <p class="section-form__row">
+                 <label class="section-form__label" for="add-latitude">
+                  <span class="section-form__heading">Latitude</span>
+                   <input class="section-form__input input-field" id="add-latitude" name="add-latitude" type="text" inputmode="decimal" pattern="^([-+]?[0-9]{1,2})(\.[0-9]{1,2})?$" autocomplete="off" aria-label="Type latitude here" placeholder="Latitude e.g. 89.25" required >
+                   <small class="small small--form-add">Latitude must be 5 characters long, must contain arabic nubmers with two decimals divided by a dot. Maximum value: «90.00», minimum value: «-90.00»</small>
+                 </label>
+                </p>
+                <p class="section-form__row">
+                  <label class="section-form__label" for="add-longitude">
+                    <span class="section-form__heading">Longitude</span>
+                    <input class="section-form__input input-field" id="add-longitude" name="add-longitude" type="text" inputmode="decimal" pattern="^([-+]?[0-9]{0,3})(\.[0-9]{1,2})?$" autocomplete="off" aria-label="Type latitude here" placeholder="Longitude e.g. 184.13" required >
+                    <small class="small small--form-add">Longitude must be 5 characters long, must contain arabic nubmers with two decimals divided by a dot. Maximum value: «180.00», minimum value: «-180.00»</small>
+                  </label>
+                 </p>
+                <button class="section-form__button section-form__button--add btn" type="submit" aria-label="Add new items to database">Add!</button>
+              </form>
+            </section>
           </div>
 
           <div class="banner banner--search" data-banner="search">
@@ -78,13 +127,15 @@
               <form class="section-form section-form--check">
                 <p class="section-form__row">
                  <label class="section-form__label" for="check-latitude">
-                   <input class="section-form__input input-field" id="check-latitude" name="latitude" type="text" inputmode="numeric" pattern="^([-+]?[0-9]{1,2})(\.[0-9]{1,2})?$" autocomplete="off" aria-label="Type latitude here" placeholder="e.g. 89.25" required >
+                  <span class="section-form__heading">Latitude</span>
+                   <input class="section-form__input input-field" id="check-latitude" name="latitude" type="text" inputmode="decimal" pattern="^([-+]?[0-9]{1,2})(\.[0-9]{1,2})?$" autocomplete="off" aria-label="Type latitude here" placeholder="e.g. 89.25" required >
                    <small class="small small--form-check">Latitude must be 5 characters long, must contain arabic nubmers with two decimals divided by a dot. Maximum value: «90.00», minimum value: «-90.00»</small>
                  </label>
                 </p>
                 <p class="section-form__row">
                   <label class="section-form__label" for="check-longitude">
-                    <input class="section-form__input input-field" id="check-longitude" name="longitude" type="text" inputmode="numeric" pattern="^([-+]?[0-9]{0,3})(\.[0-9]{1,2})?$" autocomplete="off" aria-label="Type latitude here" placeholder="e.g. 184.13" required >
+                    <span class="section-form__heading">Longitude</span>
+                    <input class="section-form__input input-field" id="check-longitude" name="longitude" type="text" inputmode="decimal" pattern="^([-+]?[0-9]{0,3})(\.[0-9]{1,2})?$" autocomplete="off" aria-label="Type latitude here" placeholder="e.g. 184.13" required >
                     <small class="small small--form-check">Longitude must be 5 characters long, must contain arabic nubmers with two decimals divided by a dot. Maximum value: «180.00», minimum value: «-180.00»</small>
                   </label>
                  </p>
